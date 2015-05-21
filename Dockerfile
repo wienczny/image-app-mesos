@@ -24,7 +24,7 @@ RUN apt-get -q update && \
         libz-dev \
         libzookeeper-mt-dev \
         maven \
-        openjdk-6-jdk \
+        openjdk-7-jdk \
         protobuf-compiler \
         python-boto \
         python-dev \
@@ -33,14 +33,14 @@ RUN apt-get -q update && \
 
 
 # Install Mesos
-RUN wget -qO /tmp/mesos.tar.gz http://www.apache.org/dist/mesos/0.21.0/mesos-0.21.0.tar.gz \
+RUN wget -qO /tmp/mesos.tar.gz http://www.apache.org/dist/mesos/0.22.1/mesos-0.22.1.tar.gz \
  && tar -C /tmp/ -xzf /tmp/mesos.tar.gz && rm -f /tmp/mesos.tar.gz \
- && mkdir /tmp/mesos-0.21.0/build \
- && cd /tmp/mesos-0.21.0/build \
+ && mkdir /tmp/mesos-0.22.1/build \
+ && cd /tmp/mesos-0.22.1/build \
  && ../configure --with-zookeeper=/usr --with-leveldb=/usr --with-glog=/usr --with-curl=/usr --with-sasl=/usr --with-zlib=/usr --with-apr=/usr --with-svn=/usr --with-sysroot=/usr \
  && make \
  && make install \
- && rm -rf /tmp/mesos-0.21.0
+ && rm -rf /tmp/mesos-0.22.1
  
 
 # Patch rootfs
